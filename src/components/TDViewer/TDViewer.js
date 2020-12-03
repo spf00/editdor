@@ -19,7 +19,9 @@ import addProperty from './AddProperty';
 import addAction from './AddAction';
 import addEvent from './AddEvent';
 import { buildAttributeListObject } from '../../util';
+import tdValidator from '@thing-description-playground/core'
 import '../../assets/main.css'
+
 let tdJSON = {};
 let oldtdJSON = {};
 let error = "";
@@ -29,6 +31,16 @@ export default function TDViewer() {
     try {
         oldtdJSON = tdJSON;
         tdJSON = JSON.parse(context.offlineTD);
+        console.log("validating...");
+        tdValidator(context.offlineTD, console.log, {})
+            .then(result => {
+                console.log("No issues found with the TD...")
+                console.log(result)
+            }, err => {
+                console.log("We found an issue with the TD...")
+                console.error(err)
+            })
+
         error = '';
     } catch (e) {
         error = e.message;
@@ -100,7 +112,7 @@ export default function TDViewer() {
 
     const alreadyRenderedKeys = ["id", "properties", "actions", "events", "description", "title",];
 
-    const attributeListObject = buildAttributeListObject(tdJSON.id ? {id: tdJSON.id} : {}, tdJSON, alreadyRenderedKeys);
+    const attributeListObject = buildAttributeListObject(tdJSON.id ? { id: tdJSON.id } : {}, tdJSON, alreadyRenderedKeys);
 
     const attributes = Object.keys(attributeListObject).map(x => {
         return <li key={x}>{x} : {JSON.stringify(attributeListObject[x])}</li>

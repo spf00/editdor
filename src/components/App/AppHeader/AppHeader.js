@@ -161,7 +161,7 @@ export default function AppHeader() {
                 return await saveFileAs();
             }
             await writeFile(context.fileHandle, context.offlineTD);
-            
+
         } catch (ex) {
             const msg = 'Unfortunately we were unable to save your TD.';
             console.error(msg, ex);
