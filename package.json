@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.7.0",
   "type": "module",
-  "homepage": "https://eclipse.github.io/editdor/",
+  "homepage": "https://spf00.github.io/editdor/",
   "scripts": {
     "dev": "cross-env REACT_APP_TARGET_URL=http://localhost:8080 vite",
     "build": "vite build",
