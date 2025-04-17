@@ -3,10 +3,6 @@ name: publish-to-github-pages
 on: push
 
 name: publish-to-github-pages
-on:
-  push:
-    branches:
-      - master
 jobs:
   publish-to-gh-pages:
     runs-on: ubuntu-latest
