@@ -240,7 +240,7 @@ export default function AppHeader() {
 
           <AppHeaderButton onClick={openShareDialog}>
             <Share />
-            <div className="text-xs">Schere</div>
+            <div className="text-xs">Ege</div>
           </AppHeaderButton>
 
           <div className="hidden md:block">
