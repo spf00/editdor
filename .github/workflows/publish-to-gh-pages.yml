@@ -1,6 +1,6 @@
 name: publish-to-github-pages
 
-on: push
+on: [push]
 
 jobs:
   publish-to-gh-pages:
