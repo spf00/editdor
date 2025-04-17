@@ -1,5 +1,7 @@
 name: publish-to-github-pages
 
+on: push
+
 jobs:
   publish-to-gh-pages:
     runs-on: ubuntu-latest
