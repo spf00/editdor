@@ -1,21 +1,29 @@
 name: publish-to-github-pages
-on:
-  push:
-    branches:
-      - master
+
 jobs:
   publish-to-gh-pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+
+      - name: Set Node.js version 20
+        uses: actions/setup-node@v3
         with:
           node-version: "20"
-      - run: npm install
-      - run: npm run build
+
+      - name: Install dependencies
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # runs `yarn install`
+
+      - name: Build ediTDor
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build # runs `yarn build`
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: build
+          FOLDER: dist
